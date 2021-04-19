@@ -18,6 +18,13 @@ public class Application {
     public CommandLineRunner runner() {
         return (args) -> {
 
+        };
+    }
+}
+
+
+/*
+BUILDER PATTERN
             ProductDetails productDetails = ProductDetails.builder()
                     .withName("Chocolate")
                     .withWeight(100)
@@ -27,6 +34,4 @@ public class Application {
                     .withPrice(50)
                     .withCategories("Food")
                     .build();
-        };
-    }
-}
+ */
