@@ -20,15 +20,8 @@ public class Application {
     @Bean
     public CommandLineRunner runner() {
         return (args) -> {
-            Configuration config1 = Configuration.getInstance();
-            Configuration config2 = Configuration.getInstance();
 
-            System.out.println(config1 == config2);
 
-            Config2 superConfig1 = Config2.SUPER_CONFIG;
-            Config2 superConfig2 = Config2.SUPER_CONFIG;
-
-            System.out.println(superConfig1 == superConfig2); // he already knows ;)
         };
     }
 }
@@ -46,3 +39,16 @@ BUILDER PATTERN
                     .withCategories("Food")
                     .build();
  */
+
+
+ /*           SINGLETON PATTERN
+            Configuration config1 = Configuration.getInstance();
+            Configuration config2 = Configuration.getInstance();
+
+            System.out.println(config1 == config2);
+
+            Config2 superConfig1 = Config2.SUPER_CONFIG;
+            Config2 superConfig2 = Config2.SUPER_CONFIG;
+
+            System.out.println(superConfig1 == superConfig2); // he already knows ;)
+        */
