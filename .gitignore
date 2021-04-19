@@ -41,7 +41,7 @@ target/
 *.sbr
 *.sdf
 *.pyc
-*.xml
+#*.xml
 ipch/
 obj/
 [Bb]in
