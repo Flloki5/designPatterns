@@ -1,10 +1,14 @@
 package com.flloki.patterns;
 
 import com.flloki.patterns.creational.builder.ProductDetails;
+import com.flloki.patterns.creational.singleton.Configuration;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+
+
 
 import static com.flloki.patterns.creational.builder.ProductDetails.builder;
 
@@ -17,7 +21,10 @@ public class Application {
     @Bean
     public CommandLineRunner runner() {
         return (args) -> {
+            Configuration config1 = Configuration.getInstance();
+            Configuration config2 = Configuration.getInstance();
 
+            System.out.println(config1 == config2);
         };
     }
 }
