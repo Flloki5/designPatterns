@@ -36,8 +36,8 @@ public class Application {
 }
 
 
-/*
-BUILDER PATTERN
+ /*
+                        /// BUILDER PATTERN ///
             ProductDetails productDetails = ProductDetails.builder()
                     .withName("Chocolate")
                     .withWeight(100)
@@ -50,7 +50,7 @@ BUILDER PATTERN
  */
 
 
- /*           SINGLETON PATTERN
+ /*           //// SINGLETON PATTERN ////
             Configuration config1 = Configuration.getInstance();
             Configuration config2 = Configuration.getInstance();
 
@@ -60,4 +60,4 @@ BUILDER PATTERN
             Config2 superConfig2 = Config2.SUPER_CONFIG;
 
             System.out.println(superConfig1 == superConfig2); // he already knows ;)
-        */
+ */
