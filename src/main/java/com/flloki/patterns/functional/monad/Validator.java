@@ -23,4 +23,15 @@ public class Validator<T> {
 
         return this;
     }
+
+    public T get() {
+        return item;
+    }
+
+    public boolean result(){
+        if(error.size() != 0) {
+            return false;
+        }
+        return true;
+    }
 }

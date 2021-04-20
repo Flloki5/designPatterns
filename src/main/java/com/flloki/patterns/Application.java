@@ -2,6 +2,7 @@ package com.flloki.patterns;
 
 import com.flloki.patterns.functional.monad.Form;
 import com.flloki.patterns.functional.monad.ValidationError;
+import com.flloki.patterns.functional.monad.Validator;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,10 +21,12 @@ public class Application {
     @Bean
     public CommandLineRunner runner() {
         return (args) -> {
-            of(new Form())
+            Validator<Form> validator = of(new Form())
                     .validate(form -> form.getUsername() != null, USERNAME_NULL)
                     .validate(form -> form.getUsername().length() > 10, OVERSIZED_USERNAME);
 
+            validator.result();
+            validator.getErrors();
         };
     }
 }
