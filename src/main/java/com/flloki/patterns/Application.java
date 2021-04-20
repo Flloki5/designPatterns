@@ -1,5 +1,9 @@
 package com.flloki.patterns;
 
+import com.flloki.patterns.behavioral.strategy.Addition;
+import com.flloki.patterns.behavioral.strategy.Multiplication;
+import com.flloki.patterns.behavioral.strategy.Numbers;
+import com.flloki.patterns.behavioral.strategy.Subtraction;
 import com.flloki.patterns.creational.builder.ProductDetails;
 import com.flloki.patterns.creational.singleton.Config2;
 import com.flloki.patterns.creational.singleton.Configuration;
@@ -25,13 +29,29 @@ public class Application {
     @Bean
     public CommandLineRunner runner() {
         return (args) -> {
+            Numbers numbers = new Numbers(5, 10);
 
+            int addition = numbers.calculate(new Addition());
+            int subtraction = numbers.calculate(new Subtraction());
+            int multiplication = numbers.calculate(new Multiplication());
+
+            System.out.println(addition);
+            System.out.println(subtraction);
+            System.out.println(multiplication);
+
+        };
+    }
+}
+
+
+
+ /*           //// ADAPTER PATTERN ////
             ERPAccountancyBusinessSystemImpl legacy = new ERPAccountancyBusinessSystemImpl();
             ERP2ToLegacySystemAdapterImpl newSystem = new ERP2ToLegacySystemAdapterImpl(legacy);
 
             newSystem.submitTimeFor();
 
- /*            Movable doge = new Doge();
+            Movable doge = new Doge();
 
             System.out.println(doge.getSpeedInMPH());
 
@@ -39,9 +59,6 @@ public class Application {
 
             System.out.println(mphToKPHAdapter.getSpeedInKPH());
  */
-        };
-    }
-}
 
 
  /*
