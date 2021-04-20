@@ -6,6 +6,8 @@ import com.flloki.patterns.creational.singleton.Configuration;
 import com.flloki.patterns.structural.adapter.example1.Doge;
 import com.flloki.patterns.structural.adapter.example1.MPHToKPHAdapter;
 import com.flloki.patterns.structural.adapter.example1.Movable;
+import com.flloki.patterns.structural.adapter.example2.ERP2ToLegacySystemAdapterImpl;
+import com.flloki.patterns.structural.adapter.example2.ERPAccountancyBusinessSystemImpl;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,14 +25,20 @@ public class Application {
     @Bean
     public CommandLineRunner runner() {
         return (args) -> {
-            Movable doge = new Doge();
+
+            ERPAccountancyBusinessSystemImpl legacy = new ERPAccountancyBusinessSystemImpl();
+            ERP2ToLegacySystemAdapterImpl newSystem = new ERP2ToLegacySystemAdapterImpl(legacy);
+
+            newSystem.submitTimeFor();
+
+ /*            Movable doge = new Doge();
 
             System.out.println(doge.getSpeedInMPH());
 
             MPHToKPHAdapter mphToKPHAdapter = new MPHToKPHAdapter(doge);
 
             System.out.println(mphToKPHAdapter.getSpeedInKPH());
-
+ */
         };
     }
 }
