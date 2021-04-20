@@ -1,24 +1,15 @@
 package com.flloki.patterns;
 
-import com.flloki.patterns.behavioral.strategy.Addition;
-import com.flloki.patterns.behavioral.strategy.Multiplication;
-import com.flloki.patterns.behavioral.strategy.Numbers;
-import com.flloki.patterns.behavioral.strategy.Subtraction;
-import com.flloki.patterns.creational.builder.ProductDetails;
-import com.flloki.patterns.creational.singleton.Config2;
-import com.flloki.patterns.creational.singleton.Configuration;
-import com.flloki.patterns.structural.adapter.example1.Doge;
-import com.flloki.patterns.structural.adapter.example1.MPHToKPHAdapter;
-import com.flloki.patterns.structural.adapter.example1.Movable;
-import com.flloki.patterns.structural.adapter.example2.ERP2ToLegacySystemAdapterImpl;
-import com.flloki.patterns.structural.adapter.example2.ERPAccountancyBusinessSystemImpl;
+import com.flloki.patterns.functional.monad.Form;
+import com.flloki.patterns.functional.monad.ValidationError;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-
-import static com.flloki.patterns.creational.builder.ProductDetails.builder;
+import static com.flloki.patterns.functional.monad.ValidationError.OVERSIZED_USERNAME;
+import static com.flloki.patterns.functional.monad.Validator.of;
+import static com.flloki.patterns.functional.monad.ValidationError.USERNAME_NULL;
 
 @SpringBootApplication
 public class Application {
@@ -29,6 +20,17 @@ public class Application {
     @Bean
     public CommandLineRunner runner() {
         return (args) -> {
+            of(new Form())
+                    .validate(form -> form.getUsername() != null, USERNAME_NULL)
+                    .validate(form -> form.getUsername().length() > 10, OVERSIZED_USERNAME);
+
+        };
+    }
+}
+
+
+
+ /*           //// STRATEGY PATTERN ////
             Numbers numbers = new Numbers(5, 10);
 
             int addition = numbers.calculate(new Addition());
@@ -38,12 +40,7 @@ public class Application {
             System.out.println(addition);
             System.out.println(subtraction);
             System.out.println(multiplication);
-
-        };
-    }
-}
-
-
+*/
 
  /*           //// ADAPTER PATTERN ////
             ERPAccountancyBusinessSystemImpl legacy = new ERPAccountancyBusinessSystemImpl();
